@@ -16,7 +16,7 @@ export class WelcomePage extends Component {
                         <AppBar>
                             <Toolbar>                        
                                 <div style={{flexGrow:1}}></div>
-                                <Typography variant='h4' style={{color:'red',boxSizing:'border-box'}}>
+                                <Typography variant='h4' style={{color:'red',fontFamily:'cursive'}}>
                                     Notifi
                                 </Typography>
                                 <div style={{flexGrow:1}}></div>
