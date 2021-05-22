@@ -1,4 +1,4 @@
-import { AppBar, Button, ButtonGroup, Card, Container,Grid,Paper, ThemeProvider, Toolbar } from '@material-ui/core'
+import { AppBar, Button, ButtonGroup, Card, Container,Grid,Paper, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
 
 import React, { Component } from 'react'
 import Navbar from '../design/Navbar'
@@ -11,48 +11,48 @@ export class WelcomePage extends Component {
         return (
             <div>
                 <ThemeProvider>
-                 <AppBar>
-                    <Toolbar>                        
-                        <div style={{flexGrow:1}}></div>
-                        <Button style={{color:'red'}} size='large'>
-                            notifi
-                        </Button>
-                        <div style={{flexGrow:1}}></div>
-                        <ButtonGroup paddingLeft='100px' variant='text'>
-                        <Button style={{color:'orange'}} paddingLeft="85%">
-                            register 
-                         </Button>
-                        <Button color='secondary' >
-                            login 
-                         </Button>
+                
+                    
+                        <AppBar>
+                            <Toolbar>                        
+                                <div style={{flexGrow:1}}></div>
+                                <Typography variant='h4' style={{color:'red',boxSizing:'border-box'}}>
+                                    Notifi
+                                </Typography>
+                                <div style={{flexGrow:1}}></div>
+                                <ButtonGroup paddingLeft='100px' variant='text'>
+                                <Button href='register' style={{color:'orange'}}>
+                                    register 
+                                </Button>
+                                <Button href='login' color='secondary' >
+                                    login 
+                                </Button>
 
-                        </ButtonGroup>
-                       
-                    </Toolbar>
-                </AppBar> 
-                
-                
-                <Container maxWidth='md' color='secondary' variant='contained'>
-                    <Grid spacing='3'>
-                    <Button 
-                    endIcon={<Icon></Icon>}
-                    variant="outlined" 
-                    color="secondary">
-                        Primary
-                    </Button>
-                        <Paper style={{height:50,width:150,}} color='primary'>
-                            hi
-                        </Paper>
-                        <Paper style={{height:50,width:150,}}>
-                            hi
-                        </Paper>
-                        <Paper style={{height:50,width:150,}}>
-                            hi
-                        </Paper>
-                       
+                                </ButtonGroup>
+                            
+                            </Toolbar>
+                        </AppBar>
+                        <br></br>
+                        <br></br>
+                        <br></br><br></br>
+                    
+                    <Grid container direction= {'column'} spacing={24}>
+
+                    <Grid item style={{backgroundColor:'green',textAlign:'center'}}>
+                        <Typography>
+                            ------------- Welcome Page ------
+                        </Typography>
                     </Grid>
-                </Container>
+                    <Grid item xl={6} md={6} sm={12} xs={12}>
+                    <Button>click</Button>
+                    <Button>click</Button>
+
+                    </Grid>
+                    
+
+                </Grid>
                 </ThemeProvider>
+               
             </div>
         )
     }
