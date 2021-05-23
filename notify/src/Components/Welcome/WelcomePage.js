@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import Navbar from '../design/Navbar'
 import Sidebar from '../design/Sidebar'
 import Icon from '@material-ui/icons/Send';
+import heroku from '../variable'
 
 
 export class WelcomePage extends Component {
@@ -44,11 +45,11 @@ export class WelcomePage extends Component {
                         </Typography>
                     </Grid>
                     <Grid item xl={6} md={6} sm={12} xs={12}>
-                    <Button>click</Button>
+                    <Button onClick = {() => console.log(JSON.stringify(heroku.baseURL,null,2))}>click</Button>
                     <Button>click</Button>
 
                     </Grid>
-                    
+
 
                 </Grid>
                 </ThemeProvider>

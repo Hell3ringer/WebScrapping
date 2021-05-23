@@ -8,7 +8,7 @@ dotenv.config()
 
 const PORT = process.env.PORT || 4000
 
-mongoose.connect(process.env.database, () => console.log('database connected') )
+mongoose.connect(process.env.database, () => console.log('database connected --------------------------------------------') )
 app.disable("x-powered-by");
 
 app.use(express.json())

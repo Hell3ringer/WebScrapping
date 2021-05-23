@@ -1,15 +1,12 @@
 const mongoose = require('mongoose')
 
 const loginTemplate = new mongoose.Schema({
-    idToken:{
+    
+    name:{
         type:String,
         required:true
     },
-    firstName:{
-        type:String,
-        required:true
-    },
-    lastName:{
+    picture:{
         type:String,
         required:true
     },
