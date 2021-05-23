@@ -4,53 +4,53 @@ import axios from 'axios'
 import heroku from '../variable'
 import GoogleLogin from 'react-google-login';
 import Snackbar from '@material-ui/core/Snackbar'
-
-
-const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
-  };
-
-const handleClose = () => {
-    setState({ ...state, open: false });
-  };
-
-const responseSuccessGoogle = (response) => {
-    console.log(response);
-    const token = {tokenId : response.tokenId}
-    axios.post(`${heroku.baseURL}login`,token)
-    .then((response) => {
-        if (response.status == 201) {
-            
-            console.log("logged in --------------------");
-            return (
-                <div>
-                  
-                  <Snackbar
-                    anchorOrigin={{ 'top', 'center' }}
-                    open={open}
-                    onClose={handleClose}
-                    message="I love snacks"
-                    key={'top' + 'center'}
-                  />
-                </div>
-              );
-        }else if (response.status == 200) {
-            console.log("new user registered ------------------");
-        }else{
-            console.log("err " + response);
-        }
-        //console.log("response from responseGoogle " + JSON.stringify(response,null,2));
-    })
+import MuiAlert from '@material-ui/lab/Alert';
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
-  const responseFailureGoogle = (response) => {
-    console.log(response);
-    axios.post(`${heroku.baseURL}login`,response.tokenId)
-    .then((response) => {
-        console.log("response from responseGoogle " + response);
-    })
-  }
+
+
 
 export class Login extends Component {
+    state = {
+        open : false,
+        snackbarMessage:'',
+        severity:''
+    }
+
+    handleClose = () => {
+        this.setState({open:false})
+        window.location.replace('/dashbord')
+    };
+
+      responseSuccessGoogle = (response) => {
+        //console.log(response);
+        const token = {tokenId : response.tokenId}
+        axios.post(`${heroku.baseURL}login`,token)
+        .then((response) => {
+            if (response.status == 201) {
+                
+                console.log("logged in --------------------");
+                this.setState({open:true,snackbarMessage:"login successfull",severity:'success'})
+               //window.location.replace('/dashbord')
+            }else if (response.status == 200) {
+                console.log("new user registered ------------------");
+                this.setState({open:true,snackbarMessage:"successfully registered",severity:'success'})
+            }else{
+                console.log("err " + response);
+                this.setState({open:true,snackbarMessage:"An error has occured",severity:'error'})
+            }
+            //console.log("response from responseGoogle " + JSON.stringify(response,null,2));
+        })
+      }
+      responseFailureGoogle = (response) => {
+        console.log(response);
+        axios.post(`${heroku.baseURL}login`,response.tokenId)
+        .then((response) => {
+            console.log("response from responseGoogle " + response);
+        })
+      }
+    
     render() {
         return (
             <div>
@@ -68,10 +68,25 @@ export class Login extends Component {
                             buttonText="Sign in with google"
                             theme='dark'                
                                       
-                            onSuccess={responseSuccessGoogle}
-                            onFailure={responseFailureGoogle}
+                            onSuccess={this.responseSuccessGoogle}
+                            onFailure={this.responseFailureGoogle}
                             cookiePolicy={'single_host_origin'}
                         />
+                        </Button>
+                       
+                        <Snackbar 
+                        anchorOrigin={{ vertical: 'top',
+                        horizontal: 'right' }}
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        //message={this.state.message}
+                        autoHideDuration = {1800}   >
+                            <Alert onClose={this.handleClose} severity={this.state.severity}>
+                            {this.state.snackbarMessage}
+                            </Alert>
+                        </Snackbar>
+                        <Button onClick={() => this.setState({open:true,message:"login successfull"})}>
+                            open snack bar
                         </Button>
                     </Card>
                     
