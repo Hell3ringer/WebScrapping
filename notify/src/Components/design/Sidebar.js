@@ -52,7 +52,7 @@ export default function PermanentDrawerLeft() {
         classes={{
           paper: classes.drawerPaper,
         }}
-        anchor="left"
+        anchor="right"
       >
         <div className={classes.toolbar} />
         <Divider />
@@ -73,6 +73,7 @@ export default function PermanentDrawerLeft() {
             </ListItem>
           ))}
         </List>
+
       </Drawer>
       
     </div>

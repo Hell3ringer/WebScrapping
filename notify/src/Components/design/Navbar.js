@@ -11,7 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
+import MailIcon from '@material-ui/icons/InfoRounded';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Button, Link } from '@material-ui/core';
@@ -25,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: 'none',
-    [theme.breakpoints.up('sm')]: {
+    color:'red',
+    fontFamily:'cursive',
+    [theme.breakpoints.up('lg')]: {
       display: 'block',
       
     },
@@ -168,16 +170,14 @@ export default function Navbar() {
       <AppBar position="static">
         <Toolbar>
           
-          <Button className={classes.title} variant='text' noWrap color='inherit' >
+          <Button className={classes.title} variant='text' onClick={() => window.location.replace('/dashbord')} >
             Notifi
           </Button>
         
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
+              <MailIcon />
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
