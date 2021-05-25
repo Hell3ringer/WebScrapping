@@ -2,13 +2,14 @@ const express = require('express')
 const router = express.Router();
 const loginTemplate = require('../models/Login_model')
 const {OAuth2Client} = require('google-auth-library')
-const client = new OAuth2Client('337693724676-nh17c3ruc08dbqb646vs8hobl5oq2n1i.apps.googleusercontent.com')
+const client = new OAuth2Client(process.env.googleAuthId)
+const jwt = require('jsonwebtoken')
 
 router.post('/login', async (req,res) => {
     
     const token = req.body.tokenId;
     //console.log("token is " + token);
-    client.verifyIdToken({idToken:token,audience:"337693724676-nh17c3ruc08dbqb646vs8hobl5oq2n1i.apps.googleusercontent.com"})
+    client.verifyIdToken({idToken:token,audience:process.env.googleAuthId})
     .then((response) => {
         const {email_verified,name,email,picture} = response.payload
         //console.log("payload " + JSON.stringify(response.payload,null,2));
@@ -21,7 +22,9 @@ router.post('/login', async (req,res) => {
                 }else{
                     if (user) {
                         console.log("login success");
-                        return res.status(201).json(user);
+                        var newToken = jwt.sign({loginToken:token},process.env.jwtSecretKey)
+                        
+                        return res.status(201).json(newToken);
                     }else{
                         const newUser = new loginTemplate({
                             

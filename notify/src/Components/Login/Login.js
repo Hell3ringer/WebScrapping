@@ -30,7 +30,8 @@ export class Login extends Component {
         .then((response) => {
             if (response.status == 201) {
                 
-                console.log("logged in --------------------");
+                console.log("logged in --------------------");                
+                document.cookie = `loginToken=${response.data}`
                 this.setState({open:true,snackbarMessage:"login successfull",severity:'success'})
                //window.location.replace('/dashbord')
             }else if (response.status == 200) {
