@@ -1,0 +1,37 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    max-width: 80%;
+    margin-top: 20px;
+    height: 780px;
+    background-color: white;
+}
+
+.card{
+    display: flex;
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    padding: 50px 40px;
+    background-color:blue;
+    
+}
+.card-title{
+    font-family: cursive;
+    border-bottom: 5px;
+   
+   
+}
+#loginCard{
+    background-color: #2a9d8f;
+    border-radius: 20px;
+    transition: 1s;
+}
+#loginCard:hover{
+    background-color: #83c5be;
+}

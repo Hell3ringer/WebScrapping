@@ -1,4 +1,4 @@
-import { AppBar, Button, ButtonGroup, Card, Container,Grid,Paper, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
+/* import { AppBar, Button, ButtonGroup, Card, Container,Grid,Paper, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
 
 import React, { Component } from 'react'
 import Navbar from '../design/Navbar'
@@ -54,6 +54,23 @@ export class WelcomePage extends Component {
                 </Grid>
                 </ThemeProvider>
                
+            </div>
+
+
+        )
+    }
+}
+
+export default WelcomePage
+ */
+
+import React, { Component } from 'react'
+
+export class WelcomePage extends Component {
+    render() {
+        return (
+            <div>
+                welcome
             </div>
         )
     }
