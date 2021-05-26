@@ -19,8 +19,8 @@ function App() {
       {/*  <Route exact path = '/dashbord' component={Dashbord} /> */}
        <ProtectedRoute exact path='/dashbord' component={Dashbord} ></ProtectedRoute>
        
-       <Route component={ErrorPage} />
-
+      {/*  <Route component={ErrorPage} />
+ */}
      </Switch>
       
      
